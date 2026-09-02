@@ -1,47 +1,55 @@
-# Fruit & Vegetable Binary Classification with CNN & Streamlit Web App
+# Fruit & Vegetable Binary Classification with Custom CNN & MobileNetV2
 
-This repository contains a Convolutional Neural Network (CNN) built using TensorFlow/Keras to classify images into two primary food categories: Fruits and Vegetables. The project includes an interactive web application powered by Streamlit for real-time inference.
+An end-to-end Deep Learning project to automatically classify images into two primary food categories (Fruit vs. Vegetable) using Custom CNN and **MobileNetV2 Transfer Learning**, deployed via an interactive Streamlit web interface.
 
 ---
 
 ## Project Overview
 
-The main objective of this project is to map multiple individual product sub-categories (e.g., apples, bananas, tomatoes, carrots) into binary high-level targets (Fruit vs. Vegetable) and perform binary image classification with optimized data preprocessing.
+This repository evaluates custom convolutional representations against pre-trained **MobileNetV2 Transfer Learning** features for high-level binary classification (Fruit vs. Vegetable), maintaining low memory consumption and fast execution.
+
+* **Dataset:** Fruit-Vegetables Dataset
+* **Architectures:** Custom CNN & MobileNetV2 Transfer Learning
+* **Task Type:** Binary Classification (`Fruit` vs. `Vegetable`)
+* **Deployment:** Streamlit Web Application
+
+---
+
+## Performance & Results
+
+| Architecture | Training Accuracy | Validation Accuracy | Validation Loss |
+| :--- | :--- | :--- | :--- |
+| **Custom CNN** | ~96.20% | **96.70%** | ~0.1210 |
+| **MobileNetV2 (Transfer Learning)** | **88.31%** | **95.73%** | **0.1520** |
+
+* **Loss Function:** `binary_crossentropy`
+* **Output Activation:** `sigmoid` / `softmax`
 
 ---
 
 ## Key Features
 
-* **Custom Label Mapping:** Dynamically maps subfolder classes to binary categories (Fruit / Vegetable) without altering the disk structure.
-* **Preprocessed Pipeline:** Standardizes input resolution (128x128x3), RGB color channels, and pixel normalization (0-1 range).
-* **Convolutional Neural Network:** Built with multiple Conv2D and MaxPooling layers, featuring Dropout regularization to prevent overfitting.
-* **Streamlit Web Application:** Simple web interface allowing users to upload custom images and obtain immediate prediction labels along with confidence scores.
+* **Custom Subfolder Mapping:** Maps multiple product categories directly into high-level binary targets (`Fruit` / `Vegetable`).
+* **Dual Architecture Comparison:** Benchmarks a custom multi-layer CNN against pre-trained **MobileNetV2** representations.
+* **Regularization:** Uses Dropout (0.3) to prevent overfitting during training.
+* **Interactive UI:** Streamlit application for real-time image uploads and immediate predictions with confidence scores.
 
 ---
 
-## Technical Stack & Dependencies
+## Tech Stack
 
-* Python 3.x
-* TensorFlow / Keras
-* OpenCV (`cv2`)
-* Streamlit
-* Pandas & NumPy
-* Matplotlib & Seaborn
-* Scikit-Learn
+* **Python 3.x**
+* **TensorFlow / Keras**
+* **Streamlit**
+* **OpenCV (`cv2`) & Pillow**
+* **NumPy, Pandas, Matplotlib, Scikit-Learn**
 
 ---
 
-## Performance & Evaluation
+## Dataset Structure
 
-* **Task Type:** Binary Classification (Sigmoid output)
-* **Classes:** Fruit (`1`), Vegetable (`0`)
-* **Evaluation Metrics:** Accuracy curves, Loss curves, and Confusion Matrix visual analysis.
-
----
-
-## Streamlit Application Setup
-
-1. Train the model using the provided notebook and save it to the project root directory as `fruit_vegetable_model.keras`.
-2. Install the necessary dependencies:
-   ```bash
-   pip install tensorflow streamlit opencv-python pandas numpy matplotlib seaborn scikit-learn pillow
+```text
+Fruit-Vegetables-Dataset/
+├── train/       (Fruit, Vegetable)
+├── validation/  (Fruit, Vegetable)
+└── test/        (Fruit, Vegetable)
